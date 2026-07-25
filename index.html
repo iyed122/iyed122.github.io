@@ -198,11 +198,12 @@ footer .fl{display:flex;gap:16px;font-size:14px;flex-direction:column;text-align
 footer .copyright{color:var(--faint);font-size:12.5px;margin-top:auto}
 @media(max-width:600px){footer .fl{text-align:left}}
 
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
-.reveal.vis{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+/* REVEAL (JS-gated so content stays visible if JS is off) */
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.js .reveal.vis{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}}
 </style>
+<script>document.documentElement.className += ' js';</script>
 </head>
 <body>
 
