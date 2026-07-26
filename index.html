@@ -42,8 +42,7 @@ a{color:var(--accent-ink);text-decoration:none}
 a:hover{color:var(--accent)}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 h1,h2,h3,h4{color:var(--ink);line-height:1.2;letter-spacing:-.02em;font-weight:700}
-.eyebrow{font:600 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
-  display:inline-block}
+.eyebrow{font:600 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:inline-block}
 
 /* NAV */
 nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);
@@ -91,11 +90,12 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 
 /* SECTIONS */
 section{padding:52px 0}
-.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
 .sec-head h2{font-size:24px}
 .sec-head .rule{flex:1;height:1px;background:var(--line)}
+.sec-sub{color:var(--muted);font-size:14.5px;margin-bottom:26px}
 
-/* FEATURE PROJECT */
+/* PROJECT CARD */
 .feature{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:30px;
   box-shadow:var(--shadow);position:relative;overflow:hidden}
 .feature+.feature{margin-top:26px}
@@ -103,38 +103,44 @@ section{padding:52px 0}
 .feature .kicker .tag{font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#fff;
   background:var(--accent);padding:5px 9px;border-radius:6px}
 .feature .kicker .where{color:var(--accent-ink);font-weight:600}
-.feature h3{font-size:22px;margin:14px 0 8px}
-.feature .desc{color:var(--body);max-width:70ch}
-.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin:20px 0}
-.metric{background:var(--canvas);border:1px solid var(--line);border-radius:11px;padding:12px 14px;text-align:center}
-.metric b{display:block;font-size:19px;color:var(--accent-ink);font-weight:700;letter-spacing:-.02em}
-.metric span{font-size:11.5px;color:var(--muted);line-height:1.35;display:block;margin-top:3px}
-ul.bul{margin:14px 0 4px;padding:0;list-style:none;display:grid;gap:9px}
-ul.bul li{position:relative;padding-left:24px;font-size:14.5px;color:var(--body)}
+.feature h3{font-size:22px;margin:14px 0 12px}
+
+/* PROBLEM / SOLUTION lines */
+.pline{display:flex;gap:11px;font-size:14.5px;color:var(--body);margin:7px 0;align-items:baseline;max-width:80ch}
+.plab{flex:none;width:74px;font:700 10px/1.7 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+  border:1px solid var(--line-2);border-radius:5px;padding:2px 0;text-align:center;background:var(--canvas)}
+.pline b{color:var(--ink);font-weight:600}
+
+.exlabel{font:700 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:18px 0 10px}
+ul.bul{margin:0 0 4px;padding:0;list-style:none;display:grid;gap:9px}
+ul.bul li{position:relative;padding-left:24px;font-size:14.5px;color:var(--body);max-width:82ch}
 ul.bul li::before{content:"";position:absolute;left:2px;top:9px;width:8px;height:8px;border-radius:2px;
   background:var(--accent);transform:rotate(45deg)}
 ul.bul li b{color:var(--ink);font-weight:600}
+
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin:18px 0}
+.metric{background:var(--canvas);border:1px solid var(--line);border-radius:11px;padding:12px 14px;text-align:center}
+.metric b{display:block;font-size:19px;color:var(--accent-ink);font-weight:700;letter-spacing:-.02em}
+.metric span{font-size:11.5px;color:var(--muted);line-height:1.35;display:block;margin-top:3px}
+
 .figure{margin:20px 0 6px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--canvas)}
 .figure img{width:100%}
 .figure figcaption{font-size:12.5px;color:var(--muted);padding:10px 14px;border-top:1px solid var(--line);text-align:center}
-.gallery{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0 6px}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0 6px;align-items:start}
 .gallery .figure{margin:0}
 @media(max-width:640px){.gallery{grid-template-columns:1fr}}
-.stack{font:500 12.5px/1.7 var(--mono);color:var(--muted);margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)}
+.stack{font:500 12.5px/1.7 var(--mono);color:var(--muted);margin-top:18px;padding-top:14px;border-top:1px dashed var(--line)}
 .stack b{color:var(--accent-ink)}
 .links{display:flex;gap:11px;flex-wrap:wrap;margin-top:16px}
 
 /* DEMO VIDEO + CO-PILOT VOICE */
 .demo-figure{margin:20px 0 6px}
-.demo-vid{width:100%;display:block;background:#0a1018;aspect-ratio:1024/874}
+.demo-vid{width:100%;display:block;aspect-ratio:1024/468;object-fit:cover;background:#0a1018}
 .copilot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:14px;border-top:1px solid var(--line);background:var(--canvas)}
 .voice{cursor:pointer;white-space:nowrap}
 .voice.speaking{background:var(--accent-2);border-color:var(--accent-2);color:#062e2d}
 .cp-text{flex:1;min-width:220px;font-size:13.5px;color:var(--muted);margin:0;font-style:italic}
 .cp-text b{color:var(--accent-ink);font-style:normal}
-.gallery3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0 6px}
-.gallery3 .figure{margin:0}
-@media(max-width:720px){.gallery3{grid-template-columns:1fr}}
 
 /* TERMINAL + TWEET */
 .termwrap{display:grid;grid-template-columns:1.12fr .88fr;gap:16px;margin:20px 0 6px;align-items:start}
@@ -156,22 +162,13 @@ ul.bul li b{color:var(--ink);font-weight:600}
 .tweet .ft{display:flex;gap:22px;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);padding-top:10px}
 .lbl{font:600 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:block}
 
-/* COMPACT CARDS */
-.card{background:var(--surface);border:1px solid var(--line);border-radius:15px;padding:24px;
-  box-shadow:var(--shadow);transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease;
-  display:flex;flex-direction:column}
-.card:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:var(--shadow-lg)}
-.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
-.chip{background:var(--chip);color:var(--chip-ink);border-radius:7px;padding:5px 10px;
-  font:500 12px/1 var(--mono)}
-
 /* SKILLS */
 .skills{background:var(--canvas);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.skillgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.skillgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
 .skillcard{background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:20px 22px;box-shadow:var(--shadow)}
-.skillcard h4{font-size:14px;color:var(--accent-ink);text-transform:uppercase;letter-spacing:.06em;
-  font:700 12.5px/1 var(--mono);margin-bottom:12px}
-.skillcard p{font-size:14px;color:var(--body);line-height:1.7}
+.skillcard h4{font:700 12.5px/1 var(--mono);color:var(--accent-ink);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}
+.tags{display:flex;flex-wrap:wrap;gap:7px}
+.tags span{background:var(--chip);color:var(--chip-ink);border-radius:7px;padding:5px 10px;font:500 12px/1.35 var(--mono)}
 
 /* META (edu / lang) */
 .meta{display:grid;grid-template-columns:1.3fr 1fr;gap:34px}
@@ -182,8 +179,7 @@ ul.bul li b{color:var(--ink);font-weight:600}
 .edu-item .d{font-size:15px;color:var(--ink);font-weight:600}
 .edu-item .s{font-size:13.5px;color:var(--muted)}
 .langs{display:grid;gap:10px}
-.lang{display:flex;justify-content:space-between;align-items:center;font-size:14px;
-  padding:9px 0;border-top:1px solid var(--line)}
+.lang{display:flex;justify-content:space-between;align-items:center;font-size:14px;padding:9px 0;border-top:1px solid var(--line)}
 .lang:first-child{border-top:none}
 .lang .l{color:var(--ink);font-weight:600}
 .lang .v{color:var(--muted);font:500 12.5px/1 var(--mono)}
@@ -210,7 +206,6 @@ footer .copyright{color:var(--faint);font-size:12.5px;margin-top:auto}
 <nav><div class="wrap">
   <a class="brand" href="#top"><span class="dot"></span>Iyed&nbsp;Mediouni</a>
   <div class="navlinks">
-    <a href="#work">Work</a>
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
@@ -233,7 +228,7 @@ footer .copyright{color:var(--faint);font-size:12.5px;margin-top:auto}
       <a class="btn" href="https://github.com/iyed122" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.6 9.6 0 0 1 12 6.8c.85 0 1.71.11 2.51.33 1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 22 12 10 10 0 0 0 12 2Z"/></svg>
         GitHub</a>
-      <a class="btn" href="https://www.linkedin.com/in/iyed-mediouni" target="_blank" rel="noopener">
+      <a class="btn" href="https://www.linkedin.com/in/iyed-mediouni-673955219/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.1c0-1.22-.02-2.8-1.9-2.8-1.9 0-2.2 1.4-2.2 2.7V21H9z"/></svg>
         LinkedIn</a>
       <a class="btn" href="Iyed_Mediouni_CV.pdf" target="_blank" rel="noopener">
@@ -246,67 +241,64 @@ footer .copyright{color:var(--faint);font-size:12.5px;margin-top:auto}
   <div class="portrait"><img src="assets/iyed.png" alt="Portrait of Iyed Mediouni" width="230" height="230"></div>
 </div></header>
 
-<!-- FLAGSHIP -->
-<section id="work"><div class="wrap">
-  <div class="sec-head"><span class="eyebrow">Flagship</span><h2>Enterprise AI Assistant</h2><span class="rule"></span></div>
+<!-- PROJECTS -->
+<section id="projects"><div class="wrap">
+  <div class="sec-head"><span class="eyebrow">Featured projects</span><h2>Selected work</h2><span class="rule"></span></div>
+  <p class="sec-sub">Each one end-to-end: the problem, the approach, and what I actually built and shipped.</p>
+
+  <!-- AI ASSISTANT -->
   <article class="feature reveal">
     <div class="kicker">
-      <span class="tag">Flagship · PFE</span>
+      <span class="tag">Enterprise GenAI · PFE</span>
       <span class="where">TELNET Holding</span> · End-of-studies engineering project · 2026
     </div>
-    <h3>Hybrid Graph-RAG + live-API agent with a self-improving evaluation loop</h3>
-    <p class="desc">A fully local enterprise assistant that answers engineering questions from a
-      <b>Neo4j knowledge graph</b> built from Jira/Confluence/GitLab exports <em>and</em> the live APIs at once.
-      A LangGraph agent routes each question, a local LLM synthesizes the answer, and an evaluation
-      pipeline scores every response, mines training data, and gates fine-tuned adapter deployment.
-      Built end-to-end and optimized across three A/B-verified rounds.</p>
+    <h3>Enterprise AI Assistant — hybrid Graph-RAG with a self-improving evaluation loop</h3>
+    <p class="pline"><span class="plab">Problem</span> Engineers lose hours a week manually re-checking Jira, Confluence and GitLab — and don't trust a generic chatbot's answers enough to rely on them.</p>
+    <p class="pline"><span class="plab">Solution</span> An <b>on-prem</b> assistant that answers from a Neo4j knowledge graph <em>and</em> the live APIs at once, cites verifiable sources, and continuously fine-tunes itself on the team's own data.</p>
     <div class="metrics">
-      <div class="metric"><b>~24 GB</b><span>embedded corpus</span></div>
-      <div class="metric"><b>~424k</b><span>Jira issues in graph</span></div>
-      <div class="metric"><b>1.28 M</b><span>vector chunk nodes</span></div>
-      <div class="metric"><b>2.4×</b><span>faster (7.3→3.0 s)</span></div>
+      <div class="metric"><b>2.4×</b><span>faster answers (7.3→3.0 s)</span></div>
       <div class="metric"><b>+27%</b><span>model faithfulness</span></div>
-      <div class="metric"><b>6 GB</b><span>GPU · QLoRA/DPO</span></div>
+      <div class="metric"><b>1.28 M</b><span>vector chunk nodes</span></div>
+      <div class="metric"><b>~424k</b><span>Jira issues in graph</span></div>
+      <div class="metric"><b>20+</b><span>typed relationships</span></div>
+      <div class="metric"><b>~24 GB</b><span>embedded corpus</span></div>
     </div>
+    <div class="exlabel">Execution</div>
     <ul class="bul">
-      <li><b>Hybrid retrieval:</b> Neo4j vector index + multi-hop traversal over 20+ typed Jira/Confluence
-        edges, cross-encoder reranking, and a direct indexed fetch when a question names a ticket.</li>
-      <li><b>Agentic routing:</b> a bilingual (EN/FR) LangGraph router between the knowledge base and live
-        GitLab/Jira/Confluence — a deterministic ~30-rule NL→API compiler with parallel dispatch and fan-out caps.</li>
-      <li><b>LLMOps ("Hammer"):</b> scores every answer (RAGAS + deterministic validators), grades
-        GOLD→FAILED, mines QLoRA/DPO datasets, and gates adapter deployment behind a benchmark + MLflow registry.</li>
-      <li><b>Engineering discipline:</b> fixed a prompt-overflow bug (12.6k→5.7k tokens) and a scoring defect
-        that was poisoning the training set — lifting model faithfulness by a measured 27%.</li>
+      <li><b>Hybrid Graph-RAG:</b> vector search over 1.28 M chunks in Neo4j + multi-hop traversal of typed relationships (BLOCKS, CHILD_OF…) + cross-encoder reranking, so an answer cites <em>why</em> a ticket matters, not just that it's similar.</li>
+      <li><b>Agentic routing:</b> a bilingual (EN/FR) LangGraph agent with a deterministic ~30-rule NL→API compiler (JQL / CQL / GitLab REST), parallel dispatch and per-project fan-out caps for live data.</li>
+      <li><b>Self-improving loop ("Hammer"):</b> RAGAS + deterministic validators score every answer, grade it GOLD→FAILED, mine QLoRA/DPO datasets, and gate any fine-tuned adapter behind a benchmark before promotion via MLflow.</li>
+      <li><b>On-prem, low-cost discipline:</b> 4-bit QLoRA + gradient checkpointing fit the whole fine-tuning loop on a single 6 GB consumer GPU — no data leaves the building, and cost doesn't scale with usage.</li>
+      <li><b>Debugged for production:</b> fixed a silent prompt-overflow (12.6k→5.7k tokens) and an evaluation defect that was mislabelling correct answers and poisoning the training set — the fix lifted faithfulness a measured 27%.</li>
     </ul>
     <figure class="figure">
       <img src="assets/ai_architecture.png" alt="AI Assistant architecture: ingestion, graph retrieval, live APIs, LangGraph agent, Hammer evaluation, and QLoRA/DPO training loop" loading="lazy">
-      <figcaption>Closed self-improving loop: ingestion → graph + live retrieval → agent → Hammer scoring → QLoRA/DPO → back to the served model.</figcaption>
+      <figcaption>The closed loop: ingestion → graph + live retrieval → agent → Hammer scoring → QLoRA/DPO → back to the served model.</figcaption>
     </figure>
     <div class="stack"><b>Stack</b> &nbsp;Python · Neo4j · MongoDB · Ollama (Qwen3) · LangGraph · sentence-transformers · RAGAS · TRL/PEFT · MLflow · FastAPI · React · Docker</div>
     <div class="links">
       <a class="btn" href="https://github.com/iyed122/ai-assistant" target="_blank" rel="noopener">Source &amp; docs ↗</a>
     </div>
   </article>
-</div></section>
 
-<!-- PROJECTS -->
-<section id="projects"><div class="wrap">
-  <div class="sec-head"><span class="eyebrow">Selected projects</span><h2>More work</h2><span class="rule"></span></div>
-
+  <!-- AUTONOMOUS VEHICLE -->
   <article class="feature reveal">
     <div class="kicker">
       <span class="tag">Autonomous driving</span>
       <span class="where">AWS SageMaker · nuScenes</span> · Jul – Oct 2025
     </div>
     <h3>Autonomous-Vehicle Perception &amp; Planning — a full ADAS decision stack</h3>
-    <p class="desc">An end-to-end self-driving safety slice owned by one engineer: a fine-tuned
-      <b>YOLOv8</b> camera detector plus a custom <b>bird's-eye-view LiDAR planner</b> feed a fusion layer that
-      emits a <b>CLEAR / CAUTION / BRAKE</b> decision with distance- and time-to-obstacle. A local
-      <b>Vision-Language Model (Qwen2.5-VL via Ollama)</b> adds a neuro-symbolic layer — reasoning over the full
-      6-camera surround + LiDAR BEV to flag open-vocabulary hazards and <b>voice the decision aloud</b> to the driver.
-      Trained on ~200&nbsp;GB of nuScenes on AWS SageMaker; ships as a runnable Streamlit app.</p>
+    <p class="pline"><span class="plab">Problem</span> Forward-collision warning and automatic braking need one loop — <b>perceive → predict → decide</b> — that normally spans two specialist teams (perception and planning).</p>
+    <p class="pline"><span class="plab">Solution</span> That whole vertical slice, owned solo: camera detection + a LiDAR planner fused into a real <b>CLEAR / CAUTION / BRAKE</b> decision, with a vision-language model that explains and <b>voices</b> it.</p>
+    <div class="exlabel">Execution</div>
+    <ul class="bul">
+      <li><b>Perception:</b> a fine-tuned <b>YOLOv8</b> camera detector plus a custom <b>bird's-eye-view</b> multi-task LiDAR planner (3 trajectory modes × 20 waypoints).</li>
+      <li><b>Decision:</b> a pure-NumPy fusion layer walks the predicted path through the LiDAR obstacle map → distance, time-to-collision, and a CLEAR/CAUTION/BRAKE signal.</li>
+      <li><b>Neuro-symbolic layer:</b> a local <b>VLM (Qwen2.5-VL via Ollama)</b> reasons over the 6-camera surround + BEV to flag open-vocabulary hazards and speak an instruction to the driver.</li>
+      <li><b>Cloud → local:</b> trained on ~200 GB of nuScenes on AWS SageMaker; ships as a runnable Streamlit app, a risk-monitor video and a per-scene PDF safety report.</li>
+    </ul>
     <figure class="figure demo-figure">
-      <video class="demo-vid" src="assets/av_demo.mp4" poster="assets/av_demo_poster.jpg"
+      <video class="demo-vid" src="assets/av_demo.mp4" poster="assets/av_demo_poster.jpg" width="1024" height="468"
              muted autoplay loop playsinline preload="metadata" aria-label="Live ADAS scene dashboard demo: camera detections, BEV planned path, and real-time risk decision"></video>
       <div class="copilot">
         <button class="btn primary voice" id="cpBtn" type="button">🔊 Hear the AI co-pilot</button>
@@ -314,10 +306,9 @@ footer .copyright{color:var(--faint);font-size:12.5px;margin-top:auto}
       </div>
       <figcaption>Live Scene Dashboard — YOLO camera detections + BEV planned path vs. LiDAR obstacles → real-time CLEAR / CAUTION / BRAKE with distance &amp; time-to-collision.</figcaption>
     </figure>
-    <div class="gallery3">
-      <figure class="figure"><img src="assets/av_dashboard.png" alt="BEV collision-risk dashboard emitting a BRAKE decision" loading="lazy"><figcaption>Collision-risk fusion → BRAKE</figcaption></figure>
-      <figure class="figure"><img src="assets/av_yolo.jpg" alt="YOLOv8 detecting vehicles and pedestrians in a street scene" loading="lazy"><figcaption>YOLOv8 obstacle detection</figcaption></figure>
-      <figure class="figure"><img src="assets/av_vlm.png" alt="Vision-Language Model reasoning card with hazards and rationale" loading="lazy"><figcaption>VLM open-vocabulary reasoning</figcaption></figure>
+    <div class="gallery">
+      <figure class="figure"><img src="assets/av_yolo.jpg" alt="YOLOv8 detecting vehicles and pedestrians in a street scene" loading="lazy"><figcaption>YOLOv8 obstacle detection on the camera feed</figcaption></figure>
+      <figure class="figure"><img src="assets/av_vlm.png" alt="Vision-Language Model reasoning card with an open-vocabulary hazard list and rationale" loading="lazy"><figcaption>VLM co-pilot — open-vocabulary hazards + rationale</figcaption></figure>
     </div>
     <div class="stack"><b>Stack</b> &nbsp;PyTorch · Ultralytics YOLOv8 · custom BEV multi-task net · Open3D · Qwen2.5-VL (Ollama) · AWS SageMaker · Streamlit · NumPy</div>
     <div class="links">
@@ -325,16 +316,21 @@ footer .copyright{color:var(--faint);font-size:12.5px;margin-top:auto}
     </div>
   </article>
 
+  <!-- TWITTER CREW -->
   <article class="feature reveal">
     <div class="kicker">
       <span class="tag">Multi-agent GenAI</span>
       <span class="where">CrewAI · Groq</span> · Sep – Nov 2025
     </div>
     <h3>AI Twitter Content Crew</h3>
-    <p class="desc">A <b>CrewAI</b> multi-agent pipeline (<b>LLaMA-3.3-70B</b> via Groq): specialized agents
-      discover trending topics, research them across the open web, and write five publish-ready tweets — then
-      post to X through the API. Tool-use guardrails cap agent loops and API spend, and a structured-output
-      step turns the crew's result into clean JSON before posting.</p>
+    <p class="pline"><span class="plab">Problem</span> Producing timely, on-trend social content is a manual chain — find the trend, research it, write it, post it.</p>
+    <p class="pline"><span class="plab">Solution</span> A <b>CrewAI</b> multi-agent pipeline that automates the whole chain from a single niche keyword to five posted tweets.</p>
+    <div class="exlabel">Execution</div>
+    <ul class="bul">
+      <li><b>Three sequential agents</b> (trend research → content research → copywriting) on <b>LLaMA-3.3-70B via Groq</b>, each output feeding the next.</li>
+      <li><b>Real tools:</b> Google Trends (pytrends), Serper search and a scrape-and-summarize browser — with guardrails that cap tool loops and API spend.</li>
+      <li><b>Deterministic hand-off:</b> a structured-output step turns the crew's result into clean JSON, then Tweepy posts each tweet via the X API.</li>
+    </ul>
     <div class="termwrap">
       <div class="term">
         <div class="term-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>python main.py</span></div>
@@ -356,19 +352,25 @@ What is your niche? <span class="ac">AI Assistants</span>
         </div>
       </div>
     </div>
-    <div class="chips"><span class="chip">CrewAI</span><span class="chip">Groq · LLaMA-3.3-70B</span><span class="chip">LangChain</span><span class="chip">Tweepy / X API</span><span class="chip">pytrends · Serper</span><span class="chip">BeautifulSoup</span></div>
+    <div class="stack"><b>Stack</b> &nbsp;CrewAI · Groq · LLaMA-3.3-70B · LangChain · Tweepy (X API) · pytrends · Serper · BeautifulSoup</div>
     <div class="links"><a class="btn" href="https://github.com/iyed122/automated-twitter-content" target="_blank" rel="noopener">Source ↗</a></div>
   </article>
 
+  <!-- E-COMMERCE -->
   <article class="feature reveal">
     <div class="kicker">
       <span class="tag">Full-stack + applied ML</span>
       <span class="where">AURAX</span> · 2023 · Bachelor end-of-studies project
     </div>
     <h3>Shopendo — Full-stack AI E-commerce</h3>
-    <p class="desc">A <b>MERN</b> storefront with image-based product similarity (<b>VGG16 + PCA + KNN</b> over
-      50k+ product images) and personalized recommendations, secure <b>Stripe</b> checkout and JWT auth, plus a
-      full back-office for catalog, coupons, orders and stock — the recommender served through a Flask API.</p>
+    <p class="pline"><span class="plab">Problem</span> An online store needs to help shoppers find visually-similar products and check out securely, with a real back-office behind it.</p>
+    <p class="pline"><span class="plab">Solution</span> A complete <b>MERN</b> storefront with an image-similarity recommender, secure payments, and a full admin panel.</p>
+    <div class="exlabel">Execution</div>
+    <ul class="bul">
+      <li><b>Image-based recommender:</b> VGG16 feature extraction + PCA + KNN over <b>50k+ product images</b>, served through a Flask API for visually-similar product discovery.</li>
+      <li><b>Storefront:</b> React + Node/Express + MongoDB, secure <b>Stripe</b> checkout and JWT authentication.</li>
+      <li><b>Back-office:</b> full admin for catalog, coupons, orders, users and live stock.</li>
+    </ul>
     <div class="gallery">
       <figure class="figure"><img src="assets/ecom_checkout.jpg" alt="Shopendo storefront checkout page with order summary and cart" loading="lazy"><figcaption>Storefront — checkout &amp; order summary</figcaption></figure>
       <figure class="figure"><img src="assets/ecom_admin.jpg" alt="Shopendo admin back-office: new-product form with dashboard sidebar" loading="lazy"><figcaption>Admin back-office — catalog management</figcaption></figure>
@@ -381,14 +383,18 @@ What is your niche? <span class="ac">AI Assistants</span>
 <section id="skills" class="skills"><div class="wrap">
   <div class="sec-head"><span class="eyebrow">Toolbox</span><h2>Skills</h2><span class="rule"></span></div>
   <div class="skillgrid">
-    <div class="skillcard"><h4>LLM &amp; GenAI</h4><p>RAG (vector + graph) · LangGraph · LangChain · CrewAI ·
-      RAGAS evaluation · prompt/context budgeting · QLoRA / DPO fine-tuning (TRL, PEFT, bitsandbytes) · Ollama · MLflow</p></div>
-    <div class="skillcard"><h4>ML / Data</h4><p>PyTorch · TensorFlow · scikit-learn · OpenCV · Pandas · NumPy ·
-      motion forecasting · recommender systems · feature engineering</p></div>
-    <div class="skillcard"><h4>Engineering</h4><p>Python · JavaScript · SQL / PL-SQL · R · FastAPI · Flask ·
-      React · Node.js · Docker · Git · REST · secure API &amp; OAuth</p></div>
-    <div class="skillcard"><h4>Data &amp; Cloud</h4><p>Neo4j · MongoDB · PostgreSQL · MySQL · Cassandra · Qdrant ·
-      AWS (SageMaker, EC2, S3, Lambda, RDS, Redshift)</p></div>
+    <div class="skillcard"><h4>LLM &amp; GenAI</h4><div class="tags">
+      <span>RAG (vector + graph)</span><span>LangGraph</span><span>LangChain</span><span>CrewAI</span><span>Hugging Face</span><span>sentence-transformers</span><span>cross-encoder rerank</span><span>RAGAS</span><span>context budgeting</span><span>QLoRA / DPO</span><span>TRL · PEFT · bitsandbytes</span><span>Ollama</span><span>MLflow</span>
+    </div></div>
+    <div class="skillcard"><h4>ML &amp; Computer Vision</h4><div class="tags">
+      <span>PyTorch</span><span>TensorFlow / Keras</span><span>scikit-learn</span><span>OpenCV</span><span>Ultralytics YOLOv8</span><span>Open3D</span><span>Pandas</span><span>NumPy</span><span>motion forecasting</span><span>recommender systems</span><span>feature engineering</span>
+    </div></div>
+    <div class="skillcard"><h4>Backend &amp; Engineering</h4><div class="tags">
+      <span>Python</span><span>JavaScript</span><span>SQL / PL-SQL</span><span>R</span><span>Cypher</span><span>FastAPI</span><span>Flask</span><span>Streamlit</span><span>Node.js · Express</span><span>React</span><span>REST</span><span>secure API &amp; OAuth</span>
+    </div></div>
+    <div class="skillcard"><h4>Data, Cloud &amp; MLOps</h4><div class="tags">
+      <span>Neo4j</span><span>MongoDB</span><span>PostgreSQL</span><span>MySQL</span><span>Cassandra</span><span>Qdrant</span><span>AWS (SageMaker · EC2 · S3 · Lambda · RDS · Redshift)</span><span>Docker</span><span>Git · Git LFS</span><span>Linux / Bash</span>
+    </div></div>
   </div>
 </div></section>
 
@@ -424,7 +430,7 @@ What is your niche? <span class="ac">AI Assistants</span>
   </div>
   <div class="fl">
     <a href="https://github.com/iyed122" target="_blank" rel="noopener">GitHub ↗</a>
-    <a href="https://www.linkedin.com/in/iyed-mediouni" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a href="https://www.linkedin.com/in/iyed-mediouni-673955219/" target="_blank" rel="noopener">LinkedIn ↗</a>
     <a href="Iyed_Mediouni_CV.pdf" target="_blank" rel="noopener">CV (PDF) ↗</a>
     <span class="copyright">© 2026 Iyed Mediouni</span>
   </div>
@@ -434,7 +440,7 @@ What is your niche? <span class="ac">AI Assistants</span>
 (function(){
   var els=document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});},{threshold:.12});
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});},{threshold:.1});
     els.forEach(function(el){io.observe(el);});
   } else { els.forEach(function(el){el.classList.add('vis');}); }
 
@@ -449,7 +455,7 @@ What is your niche? <span class="ac">AI Assistants</span>
   function reset(){speaking=false;if(btn){btn.classList.remove('speaking');btn.textContent='🔊 Hear the AI co-pilot';}}
   function pickVoice(){var vs=synth?synth.getVoices():[];return vs.filter(function(v){return /en[-_]US/i.test(v.lang);})[0]||vs.filter(function(v){return /^en/i.test(v.lang);})[0]||null;}
   if(btn){
-    if(synth){try{synth.getVoices();synth.onvoiceschanged=function(){};}catch(e){}}
+    if(synth){try{synth.getVoices();}catch(e){}}
     btn.addEventListener('click',function(){
       if(!synth){txt.innerHTML='<b>Co-pilot:</b> '+lines.join('  ');return;}
       if(speaking){synth.cancel();reset();return;}
