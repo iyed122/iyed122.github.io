@@ -288,6 +288,14 @@ footer .copyright{color:var(--faint);font-size:12.5px;margin-top:auto}
       <figcaption>The product engineers actually use — one place to ask about the codebase, tickets and documents, with Chat, Data and Pipeline views.</figcaption>
     </figure>
     <figure class="figure">
+      <img src="assets/ai_training_data.png" alt="Training Data view in the assistant: QLoRA and DPO candidate tabs, per-answer score and faithfulness columns, intent and scoring-method tags, a balance warning, and 50 answers excluded as unsafe for training" loading="lazy">
+      <figcaption>Where the evaluation becomes training data. Every answer carries a score, a faithfulness value and the method that judged it — <b>50 of 60 were excluded as "not safe for training"</b>, and the UI refuses to proceed while the set is unbalanced. Curation is enforced by the product, not by discipline.</figcaption>
+    </figure>
+    <figure class="figure">
+      <img src="assets/ai_pipeline.png" alt="Pipeline tab: QLoRA training configuration with LoRA rank, alpha, learning rate, epochs, batch size, gradient accumulation and sequence length, over a prepared dataset snapshot" loading="lazy">
+      <figcaption>Fine-tuning is a product feature, not a script: LoRA rank 16 / alpha 32, lr 2e-4, gradient accumulation 8 over <code>Qwen2.5-3B-Instruct</code> in 4-bit — with the curated dataset snapshotted and versioned before a run starts.</figcaption>
+    </figure>
+    <figure class="figure">
       <img src="assets/ai_hammer.png" alt="Hammer evaluation status output: a detected quality regression, rolling average versus baseline, GOLD/SILVER/BRONZE/FAILED grade distribution, critical failure tags, and the QLoRA and DPO training pools" loading="lazy">
       <figcaption>Hammer catching a live quality regression — rolling 0.68 against a 0.97 baseline. Every answer is graded, failures are tagged (hallucination, tool-misuse, retrieval-miss), and only GOLD answers reach the QLoRA pool. This is the gate that stops a bad model shipping.</figcaption>
     </figure>
