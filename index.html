@@ -131,8 +131,12 @@ ul.bul li b{color:var(--ink);font-weight:600}
 .figure{margin:20px 0 6px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--canvas)}
 .figure img{width:100%}
 .figure figcaption{font-size:12.5px;color:var(--muted);padding:10px 14px;border-top:1px solid var(--line);text-align:center}
-.gallery{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0 6px;align-items:start}
-.gallery .figure{margin:0}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0 6px;align-items:stretch}
+.gallery .figure{margin:0;display:flex;flex-direction:column}
+/* Paired figures have different native aspect ratios (e.g. 1.75 vs 1.06), which left the
+   grid ragged. Normalise the frame and letterbox inside it so nothing is cropped. */
+.gallery .figure img{aspect-ratio:16/10;object-fit:contain;background:var(--canvas)}
+.gallery .figure figcaption{margin-top:auto}
 @media(max-width:640px){.gallery{grid-template-columns:1fr}}
 .stack{font:500 12.5px/1.7 var(--mono);color:var(--muted);margin-top:18px;padding-top:14px;border-top:1px dashed var(--line)}
 .stack b{color:var(--accent-ink)}
@@ -280,6 +284,14 @@ footer .copyright{color:var(--faint);font-size:12.5px;margin-top:auto}
       <li><b>Debugged for production:</b> fixed a silent prompt-overflow (12.6k→5.7k tokens) and an evaluation defect that was mislabelling correct answers and poisoning the training set — the fix lifted faithfulness a measured 27%.</li>
     </ul>
     <figure class="figure">
+      <img src="assets/ai_home.png" alt="AI Assistant chat interface: conversation history sidebar, Chat / Data / Pipeline tabs, and suggested queries about open issues, merge requests and the RAG pipeline" loading="lazy">
+      <figcaption>The product engineers actually use — one place to ask about the codebase, tickets and documents, with Chat, Data and Pipeline views.</figcaption>
+    </figure>
+    <figure class="figure">
+      <img src="assets/ai_hammer.png" alt="Hammer evaluation status output: a detected quality regression, rolling average versus baseline, GOLD/SILVER/BRONZE/FAILED grade distribution, critical failure tags, and the QLoRA and DPO training pools" loading="lazy">
+      <figcaption>Hammer catching a live quality regression — rolling 0.68 against a 0.97 baseline. Every answer is graded, failures are tagged (hallucination, tool-misuse, retrieval-miss), and only GOLD answers reach the QLoRA pool. This is the gate that stops a bad model shipping.</figcaption>
+    </figure>
+    <figure class="figure">
       <img src="assets/ai_architecture.png" alt="AI Assistant architecture: ingestion, graph retrieval, live APIs, LangGraph agent, Hammer evaluation, and QLoRA/DPO training loop" loading="lazy">
       <figcaption>The closed loop: ingestion → graph + live retrieval → agent → Hammer scoring → QLoRA/DPO → back to the served model.</figcaption>
     </figure>
@@ -321,10 +333,14 @@ footer .copyright{color:var(--faint);font-size:12.5px;margin-top:auto}
       </div>
       <figcaption>Live Scene Dashboard — YOLO camera detections + BEV planned path vs. LiDAR obstacles → real-time CLEAR / CAUTION / BRAKE with distance &amp; time-to-collision.</figcaption>
     </figure>
-    <div class="gallery">
-      <figure class="figure"><img src="assets/av_yolo.jpg" alt="YOLOv8 detecting vehicles and pedestrians in a street scene" loading="lazy"><figcaption>YOLOv8 obstacle detection on the camera feed</figcaption></figure>
-      <figure class="figure"><img src="assets/av_vlm.png" alt="Vision-Language Model reasoning card with an open-vocabulary hazard list and rationale" loading="lazy"><figcaption>VLM co-pilot — open-vocabulary hazards + rationale</figcaption></figure>
-    </div>
+    <figure class="figure">
+      <img src="assets/av_yolo.jpg" alt="YOLOv8 detecting vehicles and pedestrians across the six-camera surround view" loading="lazy">
+      <figcaption>YOLOv8 obstacle detection across the six-camera surround view — every vehicle and pedestrian scored per frame.</figcaption>
+    </figure>
+    <figure class="figure">
+      <img src="assets/av_vlm.png" alt="Vision-Language Model reasoning card: 360-degree surround and LiDAR BEV inputs, a geometric BRAKE decision, an open-vocabulary hazard list and the recommended action" loading="lazy">
+      <figcaption>The VLM co-pilot reads the 360° surround plus the LiDAR BEV, corroborates the geometric BRAKE decision, and lists open-vocabulary hazards the detector has no class for — then states the recommended action.</figcaption>
+    </figure>
     <div class="stack"><b>Stack</b> &nbsp;PyTorch · Ultralytics YOLOv8 · custom BEV multi-task net · Open3D · Qwen2.5-VL (Ollama) · AWS SageMaker · Streamlit · NumPy</div>
     <div class="links">
       <a class="btn primary" href="https://www.youtube.com/watch?v=EIuqoGtaeoU" target="_blank" rel="noopener">▶ Watch demo</a>
