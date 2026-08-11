@@ -28,7 +28,7 @@
   <!-- LLM -->
   <rect x="760" y="70" width="160" height="60" rx="10" fill="#ecfeff" stroke="#06b6d4"/>
   <text x="840" y="94" text-anchor="middle" class="lbl">Groq Cloud</text>
-  <text x="840" y="112" text-anchor="middle" class="sub">LLaMA 3 (70B) LLM</text>
+  <text x="840" y="112" text-anchor="middle" class="sub">LLaMA 3.3 (70B) LLM</text>
 
   <!-- Agents row -->
   <rect x="40" y="200" width="270" height="110" rx="10" fill="#f0fdf4" stroke="#22c55e"/>
