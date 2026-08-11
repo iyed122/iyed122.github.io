@@ -292,7 +292,7 @@ footer .copyright{color:var(--faint);font-size:12.5px;margin-top:auto}
       <figcaption>Hammer catching a live quality regression — rolling 0.68 against a 0.97 baseline. Every answer is graded, failures are tagged (hallucination, tool-misuse, retrieval-miss), and only GOLD answers reach the QLoRA pool. This is the gate that stops a bad model shipping.</figcaption>
     </figure>
     <figure class="figure">
-      <img src="assets/ai_architecture.png" alt="AI Assistant architecture: ingestion, graph retrieval, live APIs, LangGraph agent, Hammer evaluation, and QLoRA/DPO training loop" loading="lazy">
+      <img src="assets/ai_architecture.svg" alt="AI Assistant architecture: ingestion, graph retrieval, live APIs, LangGraph agent, Hammer evaluation, and QLoRA/DPO training loop" loading="lazy">
       <figcaption>The closed loop: ingestion → graph + live retrieval → agent → Hammer scoring → QLoRA/DPO → back to the served model.</figcaption>
     </figure>
     <div class="stack"><b>Stack</b> &nbsp;Python · Neo4j · MongoDB · Ollama (Qwen3) · LangGraph · sentence-transformers · RAGAS · TRL/PEFT · MLflow · FastAPI · React · Docker</div>
