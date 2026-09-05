@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Iyed Mediouni — AI / Machine Learning Engineer</title>
-<meta name="description" content="AI/ML engineer building production LLM systems: hybrid Graph-RAG, multi-agent orchestration, evaluation loops and QLoRA/DPO fine-tuning.">
+<meta name="description" content="AI/ML engineer building production LLM systems: hybrid Graph-RAG, multi-agent orchestration, evaluation loops and gated RAFT fine-tuning.">
 <meta property="og:title" content="Iyed Mediouni — AI / Machine Learning Engineer">
 <meta property="og:description" content="I build LLM systems that survive production — retrieval that cites its sources, agents that call real APIs, and evaluation loops that catch their own mistakes. The enterprise assistant I built at TELNET was sold to a client.">
 <meta property="og:type" content="website">
@@ -279,29 +279,29 @@ footer .copyright{color:var(--faint);font-size:12.5px;margin-top:auto}
     <ul class="bul">
       <li><b>Hybrid Graph-RAG:</b> vector search over 1.28 M chunks in Neo4j + multi-hop traversal of typed relationships (BLOCKS, CHILD_OF…) + cross-encoder reranking, so an answer cites <em>why</em> a ticket matters, not just that it's similar.</li>
       <li><b>Agentic routing:</b> a bilingual (EN/FR) LangGraph agent with a deterministic ~30-rule NL→API compiler (JQL / CQL / GitLab REST), parallel dispatch and per-project fan-out caps for live data.</li>
-      <li><b>Self-improving loop ("Hammer"):</b> RAGAS + deterministic validators score every answer, grade it GOLD→FAILED, mine QLoRA/DPO datasets, and gate any fine-tuned adapter behind a benchmark before promotion via MLflow.</li>
-      <li><b>On-prem, low-cost discipline:</b> 4-bit QLoRA + gradient checkpointing fit the whole fine-tuning loop on a single 6 GB consumer GPU — no data leaves the building, and cost doesn't scale with usage.</li>
+      <li><b>Self-improving loop ("Hammer"):</b> RAGAS + deterministic validators score every answer, grade it GOLD→FAILED, and mine the GOLD pool into RAFT training data. MLflow tracks every run; a separate, judge-free promotion gate decides what ships — and it refused my own adapter.</li>
+      <li><b>On-prem, low-cost discipline:</b> retrieval, scoring, dataset export and the promotion gate all run on a single 6 GB consumer GPU with 4-bit QLoRA adapters — no data leaves the building, and cost doesn't scale with usage. The 8B training run itself was rented by the hour; only its adapter came back.</li>
       <li><b>Debugged for production:</b> fixed a silent prompt-overflow (12.6k→5.7k tokens) and an evaluation defect that was mislabelling correct answers and poisoning the training set — the fix lifted faithfulness a measured 27%.</li>
     </ul>
     <figure class="figure">
-      <img src="assets/ai_home.png" alt="AI Assistant chat interface: conversation history sidebar, Chat / Data / Pipeline tabs, and suggested queries about open issues, merge requests and the RAG pipeline" loading="lazy">
-      <figcaption>The product engineers actually use — one place to ask about the codebase, tickets and documents, with Chat, Data and Pipeline views.</figcaption>
+      <img src="assets/ai_home.png" alt="AI Assistant answering a technical question, with its citations rendered inline beneath the answer" loading="lazy">
+      <figcaption>The product engineers actually use — one place to ask about the codebase, tickets and documents. Every answer carries its sources. Identifiers are redacted here; the client’s corpus is not mine to publish.</figcaption>
     </figure>
     <figure class="figure">
-      <img src="assets/ai_training_data.png" alt="Training Data view in the assistant: QLoRA and DPO candidate tabs, per-answer score and faithfulness columns, intent and scoring-method tags, a balance warning, and 50 answers excluded as unsafe for training" loading="lazy">
-      <figcaption>Where the evaluation becomes training data. Every answer carries a score, a faithfulness value and the method that judged it — <b>50 of 60 were excluded as "not safe for training"</b>, and the UI refuses to proceed while the set is unbalanced. Curation is enforced by the product, not by discipline.</figcaption>
+      <img src="assets/ai_training_data.png" alt="Training Data view in the assistant: the RAFT candidate pool, with per-answer score and faithfulness columns, intent and scoring-method tags, a balance warning, and 50 answers excluded as unsafe for training" loading="lazy">
+      <figcaption>Where the evaluation becomes training data. Every answer carries a score, a faithfulness value and the method that judged it — <b>50 answers were excluded as "not safe for training", leaving 9</b>, and the UI refuses to proceed while the set is unbalanced. Curation is enforced by the product, not by discipline.</figcaption>
     </figure>
     <figure class="figure">
-      <img src="assets/ai_pipeline.png" alt="Pipeline tab: QLoRA training configuration with LoRA rank, alpha, learning rate, epochs, batch size, gradient accumulation and sequence length, over a prepared dataset snapshot" loading="lazy">
-      <figcaption>Fine-tuning is a product feature, not a script: LoRA rank 16 / alpha 32, lr 2e-4, gradient accumulation 8 over <code>Qwen2.5-3B-Instruct</code> in 4-bit — with the curated dataset snapshotted and versioned before a run starts.</figcaption>
+      <img src="assets/ai_pipeline.png" alt="Pipeline tab: RAFT training configuration with LoRA rank, alpha, learning rate, epochs, batch size, gradient accumulation and sequence length" loading="lazy">
+      <figcaption>Fine-tuning is a product feature, not a script: the RAFT objective at LoRA rank 16 / alpha 32, lr 2e-4, gradient accumulation 8 over <code>Qwen3-8B</code> in 4-bit — with the curated dataset snapshotted and versioned before a run starts.</figcaption>
     </figure>
     <figure class="figure">
-      <img src="assets/ai_hammer.png" alt="Hammer evaluation status output: a detected quality regression, rolling average versus baseline, GOLD/SILVER/BRONZE/FAILED grade distribution, critical failure tags, and the QLoRA and DPO training pools" loading="lazy">
-      <figcaption>Hammer catching a live quality regression — rolling 0.68 against a 0.97 baseline. Every answer is graded, failures are tagged (hallucination, tool-misuse, retrieval-miss), and only GOLD answers reach the QLoRA pool. This is the gate that stops a bad model shipping.</figcaption>
+      <img src="assets/ai_hammer.png" alt="Hammer evaluation status output: a detected quality regression, rolling average versus baseline, GOLD/SILVER/BRONZE/FAILED grade distribution, critical failure tags, and the RAFT training pool" loading="lazy">
+      <figcaption>Hammer catching a live quality regression — rolling 0.68 against a 0.97 baseline. Every answer is graded, failures are tagged (hallucination, tool-misuse, retrieval-miss), and only GOLD answers reach the RAFT pool. This is the instrument that decides what is even eligible to train on.</figcaption>
     </figure>
     <figure class="figure">
-      <img src="assets/ai_architecture.svg" alt="AI Assistant architecture: ingestion, graph retrieval, live APIs, LangGraph agent, Hammer evaluation, and QLoRA/DPO training loop" loading="lazy">
-      <figcaption>The closed loop: ingestion → graph + live retrieval → agent → Hammer scoring → QLoRA/DPO → back to the served model.</figcaption>
+      <img src="assets/ai_architecture.svg" alt="AI Assistant architecture: ingestion, graph retrieval, live APIs, LangGraph agent, Hammer evaluation, RAFT training and a promotion gate with both outcomes" loading="lazy">
+      <figcaption>The closed loop: ingestion → graph + live retrieval → agent → Hammer scoring → RAFT training → promotion gate. The gate is drawn with both outcomes, because one that only ever approves proves nothing.</figcaption>
     </figure>
     <div class="stack"><b>Stack</b> &nbsp;Python · Neo4j · MongoDB · Ollama (Qwen3) · LangGraph · sentence-transformers · RAGAS · TRL/PEFT · MLflow · FastAPI · React · Docker</div>
     <div class="links">
@@ -428,7 +428,7 @@ What is your niche? <span class="ac">AI Assistants</span>
   <div class="sec-head"><span class="eyebrow">Toolbox</span><h2>Skills</h2><span class="rule"></span></div>
   <div class="skillgrid">
     <div class="skillcard"><h4>LLM &amp; GenAI</h4><div class="tags">
-      <span>RAG (vector + graph)</span><span>LangGraph</span><span>LangChain</span><span>CrewAI</span><span>Hugging Face</span><span>sentence-transformers</span><span>cross-encoder rerank</span><span>RAGAS</span><span>context budgeting</span><span>QLoRA / DPO</span><span>TRL · PEFT · bitsandbytes</span><span>Ollama</span><span>MLflow</span>
+      <span>RAG (vector + graph)</span><span>LangGraph</span><span>LangChain</span><span>CrewAI</span><span>Hugging Face</span><span>sentence-transformers</span><span>cross-encoder rerank</span><span>RAGAS</span><span>context budgeting</span><span>RAFT (QLoRA adapters)</span><span>TRL · PEFT · bitsandbytes</span><span>Ollama</span><span>MLflow</span>
     </div></div>
     <div class="skillcard"><h4>ML &amp; Computer Vision</h4><div class="tags">
       <span>PyTorch</span><span>TensorFlow / Keras</span><span>scikit-learn</span><span>OpenCV</span><span>Ultralytics YOLOv8</span><span>Open3D</span><span>Pandas</span><span>NumPy</span><span>motion forecasting</span><span>recommender systems</span><span>feature engineering</span>
