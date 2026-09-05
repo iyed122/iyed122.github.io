@@ -364,34 +364,24 @@ footer .copyright{color:var(--faint);font-size:12.5px;margin-top:auto}
     </div>
     <h3>AI Twitter Content Crew</h3>
     <p class="pline"><span class="plab">Problem</span> Producing timely, on-trend social content is a manual chain — find the trend, research it, write it, post it.</p>
-    <p class="pline"><span class="plab">Solution</span> A <b>CrewAI</b> multi-agent pipeline that automates the whole chain from a single niche keyword to five posted tweets.</p>
+    <p class="pline"><span class="plab">Solution</span> A <b>CrewAI</b> multi-agent pipeline that takes a single niche keyword, researches what is trending right now, drafts five grounded posts and publishes one to X — unattended.</p>
+    <div class="metrics">
+      <div class="metric"><b>3</b><span>sequential agents</span></div>
+      <div class="metric"><b>2</b><span>modes: fast path &amp; researched</span></div>
+      <div class="metric"><b>70B</b><span>LLaMA-3.3 via Groq</span></div>
+      <div class="metric"><b>3</b><span>live tools (Trends, search, scrape)</span></div>
+    </div>
     <div class="exlabel">Execution</div>
     <ul class="bul">
       <li><b>Three sequential agents</b> (trend research → content research → copywriting) on <b>LLaMA-3.3-70B via Groq</b>, each output feeding the next.</li>
       <li><b>Real tools:</b> Google Trends (pytrends), Serper search and a scrape-and-summarize browser — with guardrails that cap tool loops and API spend.</li>
-      <li><b>Deterministic hand-off:</b> a structured-output step turns the crew's result into clean JSON, then Tweepy posts each tweet via the X API.</li>
+      <li><b>Deterministic hand-off:</b> a structured-output step turns the crew's result into clean JSON, then Tweepy publishes through the X API v2.</li>
+      <li><b>Two paths, chosen deliberately:</b> a direct mode trades research depth for one fast LLM call, and the crew mode trades latency and token cost for content grounded in live data. Both converge on the same publishing step. It is a working prototype — there is no scheduler and no human approval gate yet, which is the next thing I would build before letting it run unattended on a real account.</li>
     </ul>
-    <div class="termwrap">
-      <div class="term">
-        <div class="term-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>python main.py</span></div>
-<div class="term-body"><span class="dim">## Welcome to the Twitter Content Creation Crew</span>
-What is your niche? <span class="ac">AI Assistants</span>
-
-<span class="ag">[Trending Topic Researcher]</span> Starting task…
-  <span class="pr">Action:</span> GoogleTrendsTool   <span class="pr">Input:</span> {"niche":"AI Assistants"}
-<span class="ag">[Content Researcher]</span> Deep research across the open web…
-<span class="ag">[Twitter Content Creator]</span> Drafting 5 tweets → parsing to JSON…
-<span class="ok">✓ Tweet posted successfully.</span></div>
-      </div>
-      <div>
-        <span class="lbl">Written &amp; posted autonomously by the crew — live engagement</span>
-        <div class="tweet">
-          <div class="h"><div class="av">AI</div><div><div class="nm">Content Crew</div><div class="hn">@iyed_ai · now</div></div></div>
-          <div class="bd">AI assistants are quietly moving from “chat box” to “does-the-work” agents. The winners won't have the smartest model — they'll have the best <b>tools + memory + evaluation loop</b>. Build for reliability, not demos. <span class="tag">#AI #LLM #Agents</span></div>
-          <div class="ft"><span>♡ 214</span><span>↻ 38</span><span>↗ 12</span></div>
-        </div>
-      </div>
-    </div>
+    <figure class="figure">
+      <img src="assets/crew_run.png" alt="Terminal output of a real crew run: the Trending Topic Researcher calls GoogleTrendsTool, receives HTTP 429 from the rate-limited API, and reasons its way to an alternative source" loading="lazy">
+      <figcaption>A real run, including the part most demos cut. The Google Trends API returns <b>429 &mdash; rate limited</b>; the agent reads the failure, states the problem, and routes around it to another source rather than crashing or inventing a trend. Recovering from a live API failure is the difference between an agent and a script.</figcaption>
+    </figure>
     <figure class="figure">
       <img src="assets/crew_architecture.svg" alt="Multi-agent pipeline: user niche keyword feeds three sequential CrewAI agents (trend research, content research, copywriting) on LLaMA-3.3-70B via Groq, then structured JSON output posts through the X API" loading="lazy">
       <figcaption>The pipeline: one keyword → trend research → content research → copywriting → structured JSON → posted via the X API.</figcaption>
