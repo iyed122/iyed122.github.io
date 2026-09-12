@@ -264,44 +264,53 @@ footer .copyright{color:var(--faint);font-size:12.5px;margin-top:auto}
       <span class="where">TELNET Holding</span> · End-of-studies engineering project · Feb – Jul 2026
     </div>
     <h3>Enterprise AI Assistant — hybrid Graph-RAG with a self-improving evaluation loop</h3>
-    <p class="pline"><span class="plab">Problem</span> Engineers lose hours a week manually re-checking Jira, Confluence and GitLab — and don't trust a generic chatbot's answers enough to rely on them.</p>
-    <p class="pline"><span class="plab">Solution</span> An <b>on-prem</b> assistant that answers from a Neo4j knowledge graph <em>and</em> the live APIs at once, cites verifiable sources, and continuously fine-tunes itself on the team's own data.</p>
-    <p class="pline"><span class="plab">Outcome</span> Delivered to production and <b>sold by TELNET to a client</b> — commercial software in use, not a prototype.</p>
+    <p class="pline"><span class="plab">Problem</span><span>Engineers lose hours a week manually re-checking Jira, Confluence and GitLab — and don't trust a generic chatbot's answers enough to rely on them.</span></p>
+    <p class="pline"><span class="plab">Solution</span><span>An <b>on-prem</b> assistant that answers from a Neo4j knowledge graph <em>and</em> the live APIs at once, cites verifiable sources, and improves itself on the team's own data — with a statistical gate deciding what ever reaches production.</span></p>
+    <p class="pline"><span class="plab">Outcome</span><span>Delivered to production and <b>sold by TELNET to a client</b>. The loop closed on real evidence: a RAFT-fine-tuned adapter was <b>promoted by the gate at 2.1 standard errors</b> on 366 held-out questions, answering with a verbatim quotation <b>94.8%</b> of the time.</span></p>
     <div class="metrics">
+      <div class="metric"><b>94.8%</b><span>answers grounded in a quoted source</span></div>
+      <div class="metric"><b>2.1&#963;</b><span>gate-cleared promotion (n = 366)</span></div>
       <div class="metric"><b>2.4×</b><span>faster answers (7.3→3.0 s)</span></div>
-      <div class="metric"><b>+27%</b><span>model faithfulness</span></div>
       <div class="metric"><b>1.28 M</b><span>vector chunk nodes</span></div>
-      <div class="metric"><b>~424k</b><span>Jira issues in graph</span></div>
-      <div class="metric"><b>20+</b><span>typed relationships</span></div>
+      <div class="metric"><b>428,593</b><span>Jira tickets in the graph</span></div>
       <div class="metric"><b>~24 GB</b><span>embedded corpus</span></div>
     </div>
     <div class="exlabel">Execution</div>
     <ul class="bul">
       <li><b>Hybrid Graph-RAG:</b> vector search over 1.28 M chunks in Neo4j + multi-hop traversal of typed relationships (BLOCKS, CHILD_OF…) + cross-encoder reranking, so an answer cites <em>why</em> a ticket matters, not just that it's similar.</li>
       <li><b>Agentic routing:</b> a bilingual (EN/FR) LangGraph agent with a deterministic ~30-rule NL→API compiler (JQL / CQL / GitLab REST), parallel dispatch and per-project fan-out caps for live data.</li>
-      <li><b>Self-improving loop ("Hammer"):</b> RAGAS + deterministic validators score every answer, grade it GOLD→FAILED, and mine the GOLD pool into RAFT training data. MLflow tracks every run; a separate, judge-free promotion gate decides what ships — and it refused my own adapter.</li>
+      <li><b>Evaluation that can say no ("Hammer"):</b> every answer is scored twice — a graded RAGAS score from a judge model of a different family, and a deterministic validator that checks each cited ticket key against the retrieved sources. The validator holds the veto, so a fabricated answer cannot be averaged into the training set.</li>
+      <li><b>Fine-tuning behind a gate:</b> GOLD answers become RAFT training data, MLflow tracks every run, and a judge-free promotion gate with thresholds fixed <em>before</em> training decides what ships. It refused my own adapter on the first evaluation (72 questions, 0.9 SE) and promoted it on the enlarged one (366 questions, 2.1 SE).</li>
+      <li><b>Measured, not asserted:</b> both arms generated through the same served model at the same quantisation, so the adapter is the only variable — answers grounded in a quoted span went from <b>0% to 95.8%</b> and refusals fell from 19.0% to 7.6%.</li>
       <li><b>On-prem, low-cost discipline:</b> retrieval, scoring, dataset export and the promotion gate all run on a single 6 GB consumer GPU with 4-bit QLoRA adapters — no data leaves the building, and cost doesn't scale with usage. The 8B training run itself was rented by the hour; only its adapter came back.</li>
-      <li><b>Debugged for production:</b> fixed a silent prompt-overflow (12.6k→5.7k tokens) and an evaluation defect that was mislabelling correct answers and poisoning the training set — the fix lifted faithfulness a measured 27%.</li>
     </ul>
     <figure class="figure">
       <img src="assets/ai_home.png" alt="AI Assistant answering a technical question, with its citations rendered inline beneath the answer" loading="lazy">
-      <figcaption>The product engineers actually use — one place to ask about the codebase, tickets and documents. Every answer carries its sources. Identifiers are redacted here; the client’s corpus is not mine to publish.</figcaption>
+      <figcaption>The product engineers actually use — one place to ask about the codebase, tickets and documents. Every answer carries its sources. Identifiers are redacted here; the client's corpus is not mine to publish.</figcaption>
     </figure>
     <figure class="figure">
-      <img src="assets/ai_training_data.png" alt="Training Data view in the assistant: the RAFT candidate pool, with per-answer score and faithfulness columns, intent and scoring-method tags, a balance warning, and 50 answers excluded as unsafe for training" loading="lazy">
-      <figcaption>Where the evaluation becomes training data. Every answer carries a score, a faithfulness value and the method that judged it — <b>50 answers were excluded as "not safe for training", leaving 9</b>, and the UI refuses to proceed while the set is unbalanced. Curation is enforced by the product, not by discipline.</figcaption>
+      <img src="assets/ai_kg_schema.png" alt="Knowledge-graph schema: chunk nodes with 768-dimensional vectors attached to Jira tickets and Confluence pages through typed relationships" loading="lazy">
+      <figcaption>The retrieval substrate: 1.28 M embedded chunks attached to 428,593 tickets and 47,851 pages by 1.8 M+ typed edges, so traversal can follow a blocker or a parent page instead of guessing from text similarity alone.</figcaption>
+    </figure>
+    <figure class="figure">
+      <img src="assets/ai_hammer_flow.png" alt="Hammer evaluation flow: a graded RAGAS score and a deterministic validator scoring every answer, with the validator's critical tag overriding the weighted score" loading="lazy">
+      <figcaption>Two independent scorers per answer, and the deterministic one wins. Without that rule a fluent fabrication scores 0.5875 — above the 0.50 training bar — on relevance and date-consistency points alone.</figcaption>
     </figure>
     <figure class="figure">
       <img src="assets/ai_pipeline.png" alt="Pipeline tab: RAFT training configuration with LoRA rank, alpha, learning rate, epochs, batch size, gradient accumulation and sequence length" loading="lazy">
       <figcaption>Fine-tuning is a product feature, not a script: the RAFT objective at LoRA rank 16 / alpha 32, lr 2e-4, gradient accumulation 8 over <code>Qwen3-8B</code> in 4-bit — with the curated dataset snapshotted and versioned before a run starts.</figcaption>
     </figure>
     <figure class="figure">
-      <img src="assets/ai_hammer.png" alt="Hammer evaluation status output: a detected quality regression, rolling average versus baseline, GOLD/SILVER/BRONZE/FAILED grade distribution, critical failure tags, and the RAFT training pool" loading="lazy">
-      <figcaption>Hammer catching a live quality regression — rolling 0.68 against a 0.97 baseline. Every answer is graded, failures are tagged (hallucination, tool-misuse, retrieval-miss), and only GOLD answers reach the RAFT pool. This is the instrument that decides what is even eligible to train on.</figcaption>
+      <img src="assets/ai_gate_verdict_promote.png" alt="Promotion gate verdict on the enlarged held-out run: both guards pass, the accuracy gain reaches 2.1 standard errors against a bar of 2.0, grounding 94.8 per cent, verdict PROMOTE" loading="lazy">
+      <figcaption>The verdict that shipped the adapter: guards first (refusals, fabrication), then significance — 2.1 SE against a 2.0 bar fixed before training, with quoted-span grounding at 94.8%.</figcaption>
+    </figure>
+    <figure class="figure">
+      <img src="assets/ai_gate_rulings.png" alt="Bar chart: the same gate returned REJECT at 0.9 standard errors on 72 questions and PROMOTE at 2.1 standard errors on 366 questions" loading="lazy">
+      <figcaption>One adapter, one rule, two verdicts — only the amount of evidence changed. A gate that only ever approves proves nothing about what it approves; this one refused its author's model first.</figcaption>
     </figure>
     <figure class="figure">
       <img src="assets/ai_architecture.svg" alt="AI Assistant architecture: ingestion, graph retrieval, live APIs, LangGraph agent, Hammer evaluation, RAFT training and a promotion gate with both outcomes" loading="lazy">
-      <figcaption>The closed loop: ingestion → graph + live retrieval → agent → Hammer scoring → RAFT training → promotion gate. The gate is drawn with both outcomes, because one that only ever approves proves nothing.</figcaption>
+      <figcaption>The closed loop: ingestion → graph + live retrieval → agent → Hammer scoring → RAFT training → promotion gate, which is the only path to the served model.</figcaption>
     </figure>
     <div class="stack"><b>Stack</b> &nbsp;Python · Neo4j · MongoDB · Ollama (Qwen3) · LangGraph · sentence-transformers · RAGAS · TRL/PEFT · MLflow · FastAPI · React · Docker</div>
     <div class="links">
@@ -317,8 +326,8 @@ footer .copyright{color:var(--faint);font-size:12.5px;margin-top:auto}
       <span class="where">AWS SageMaker · nuScenes</span> · Jul – Oct 2025
     </div>
     <h3>Autonomous-Vehicle Perception &amp; Planning — a full ADAS decision stack</h3>
-    <p class="pline"><span class="plab">Problem</span> Forward-collision warning and automatic braking need one loop — <b>perceive → predict → decide</b> — that normally spans two specialist teams (perception and planning).</p>
-    <p class="pline"><span class="plab">Solution</span> That whole vertical slice, owned solo: camera detection + a LiDAR planner fused into a real <b>CLEAR / CAUTION / BRAKE</b> decision, with a vision-language model that explains and <b>voices</b> it.</p>
+    <p class="pline"><span class="plab">Problem</span><span>Forward-collision warning and automatic braking need one loop — <b>perceive → predict → decide</b> — that normally spans two specialist teams (perception and planning).</span></p>
+    <p class="pline"><span class="plab">Solution</span><span>That whole vertical slice, owned solo: camera detection + a LiDAR planner fused into a real <b>CLEAR / CAUTION / BRAKE</b> decision, with a vision-language model that explains and <b>voices</b> it.</span></p>
     <div class="metrics">
       <div class="metric"><b>6</b><span>camera surround view</span></div>
       <div class="metric"><b>3 × 20</b><span>trajectory modes × waypoints</span></div>
@@ -363,8 +372,8 @@ footer .copyright{color:var(--faint);font-size:12.5px;margin-top:auto}
       <span class="where">CrewAI · Groq</span> · Sep – Nov 2025
     </div>
     <h3>AI Twitter Content Crew</h3>
-    <p class="pline"><span class="plab">Problem</span> Producing timely, on-trend social content is a manual chain — find the trend, research it, write it, post it.</p>
-    <p class="pline"><span class="plab">Solution</span> A <b>CrewAI</b> multi-agent pipeline that takes a single niche keyword, researches what is trending right now, drafts five grounded posts and publishes one to X — unattended.</p>
+    <p class="pline"><span class="plab">Problem</span><span>Producing timely, on-trend social content is a manual chain — find the trend, research it, write it, post it.</span></p>
+    <p class="pline"><span class="plab">Solution</span><span>A <b>CrewAI</b> multi-agent pipeline that takes a single niche keyword, researches what is trending right now, drafts five grounded posts and publishes one to X — unattended.</span></p>
     <div class="metrics">
       <div class="metric"><b>3</b><span>sequential agents</span></div>
       <div class="metric"><b>2</b><span>modes: fast path &amp; researched</span></div>
@@ -397,8 +406,8 @@ footer .copyright{color:var(--faint);font-size:12.5px;margin-top:auto}
       <span class="where">AURAX</span> · Ghazela Technopole · Feb – Jun 2023 · Bachelor end-of-studies project
     </div>
     <h3>Shopendo — Full-stack AI E-commerce</h3>
-    <p class="pline"><span class="plab">Problem</span> An online store needs to help shoppers find visually-similar products and check out securely, with a real back-office behind it.</p>
-    <p class="pline"><span class="plab">Solution</span> A complete <b>MERN</b> storefront with an image-similarity recommender, secure payments, and a full admin panel.</p>
+    <p class="pline"><span class="plab">Problem</span><span>An online store needs to help shoppers find visually-similar products and check out securely, with a real back-office behind it.</span></p>
+    <p class="pline"><span class="plab">Solution</span><span>A complete <b>MERN</b> storefront with an image-similarity recommender, secure payments, and a full admin panel.</span></p>
     <div class="exlabel">Execution</div>
     <ul class="bul">
       <li><b>Image-based recommender:</b> VGG16 feature extraction + PCA + KNN over <b>50k+ product images</b>, served through a Flask API for visually-similar product discovery.</li>
