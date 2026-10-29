@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Iyed Mediouni · AI Engineer, Assistants, Agents &amp; MLOps</title>
-<meta name="description" content="AI engineer building AI assistants, agents and the MLOps behind them. Latest: an enterprise assistant over Jira, Confluence and GitLab, built at TELNET Holding for ATEME.">
+<title>Iyed Mediouni · Software &amp; AI Engineer</title>
+<meta name="description" content="Software and AI engineer: full-stack web apps in React, Node.js and Python, AI assistants and agents, and the MLOps behind them. Latest: an enterprise assistant built at TELNET Holding for ATEME.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -102,23 +102,24 @@ footer{padding:40px 0 56px;border-top:1px solid var(--line);font-size:14px;color
 </head>
 <body>
 <nav><div class="wrap"><b>Iyed Mediouni</b>
- <div class="links"><a href="#case">Case study</a><a href="#work" class="hide-s">Projects</a><a href="#skills" class="hide-s">Skills</a><a href="#contact">Contact</a><a href="Iyed_Mediouni_CV.pdf">CV ↗</a></div></div></nav>
+ <div class="links"><a href="#case">Case study</a><a href="#work" class="hide-s">Projects</a><a href="#skills" class="hide-s">Skills</a><a href="#contact">Contact</a><a href="#contact">CVs</a></div></div></nav>
 
 <header><div class="wrap">
  <div class="hero">
   <div>
-   <div class="eyebrow">AI Engineer · Assistants, Agents &amp; MLOps</div>
-   <h1>I build AI that <em>pays for itself.</em></h1>
-   <p class="lead">I build AI assistants and agents that work on a company's own knowledge, and the MLOps behind them: evaluation, fine-tuning, experiment tracking and release gates, so every new model is proven before it reaches users.</p>
+   <div class="eyebrow">Software &amp; AI Engineer</div>
+   <h1>I build software that <em>pays for itself.</em></h1>
+   <p class="lead">Full-stack web applications in React, Node.js and Python, and AI assistants and agents that work on a company's own data, with the testing, evaluation and MLOps that keep them reliable once real users depend on them.</p>
    <p class="proof">Latest: an AI assistant built at <b>TELNET Holding</b> for <b>ATEME</b>, the French video-delivery company. ATEME bought it and rolled it out department by department.</p>
    <div class="cta">
     <a class="btn primary" href="#case">Watch the 2-minute demo</a>
-    <a class="btn" href="Iyed_Mediouni_CV.pdf">Download CV</a>
+    <a class="btn" href="Iyed_Mediouni_CV_Software_EN.pdf">CV · Software</a>
+    <a class="btn" href="Iyed_Mediouni_CV.pdf">CV · AI</a>
     <a class="btn" href="mailto:iyedmediouni122@gmail.com">Email me</a>
     <a class="btn" href="https://github.com/iyed122">GitHub</a>
     <a class="btn" href="https://www.linkedin.com/in/iyed-mediouni-673955219/">LinkedIn</a>
    </div>
-   <p class="where">📍 Tunisia · UTC+1, same working hours as Paris and Berlin · open to remote, full-time or contract</p>
+   <p class="where">📍 Tunisia · UTC+1, within an hour of Paris and Berlin · open to remote, full-time or contract</p>
   </div>
   <img class="photo" src="assets/iyed_suit.jpg" alt="Iyed Mediouni">
  </div>
@@ -150,6 +151,7 @@ footer{padding:40px 0 56px;border-top:1px solid var(--line);font-size:14px;color
   <div class="box">
    <h4>What I built</h4>
    <p>One assistant that searches all three at once, answers in English or French, and cites the ticket, page or merge request behind every claim. It runs on the company's own servers, so internal data never goes to an outside AI service. A new model version only goes live after it beats the current one on a fixed test.</p>
+   <p style="margin-top:10px">The software around it: a React interface that streams answers as they are written, a FastAPI backend, integrations with the Jira, Confluence and GitLab REST APIs, and Docker for deployment.</p>
   </div>
   <div class="box">
    <h4>What it changed</h4>
@@ -196,13 +198,24 @@ footer{padding:40px 0 56px;border-top:1px solid var(--line);font-size:14px;color
   <li><b>Fine-tuning:</b> RAFT (UC Berkeley's retrieval-augmented fine-tuning) with QLoRA adapters on Qwen3-8B, tracked in MLflow, served locally through Ollama.</li>
   <li><b>Release gate:</b> thresholds fixed before training; base model and adapter answer the same held-out questions and a deterministic scorer, not an LLM, decides.</li>
  </ul></details>
- <div class="chips" style="margin-top:18px"><span class="chip">LangGraph</span><span class="chip">Neo4j</span><span class="chip">Ollama · Qwen3</span><span class="chip">RAGAS</span><span class="chip">QLoRA / RAFT</span><span class="chip">MLflow</span><span class="chip">Jira · Confluence · GitLab APIs</span><span class="chip">React</span><span class="chip">Docker</span></div>
+ <div class="chips" style="margin-top:18px"><span class="chip">LangGraph</span><span class="chip">Neo4j</span><span class="chip">Ollama · Qwen3</span><span class="chip">RAGAS</span><span class="chip">QLoRA / RAFT</span><span class="chip">MLflow</span><span class="chip">React</span><span class="chip">FastAPI</span><span class="chip">REST APIs</span><span class="chip">MongoDB</span><span class="chip">Docker</span></div>
  <div class="links2" style="margin-top:16px"><a href="https://github.com/iyed122/ai-assistant">Code →</a><a href="assets/ai_demo.mp4">Demo video →</a><a href="assets/ai_architecture.png">Architecture →</a><a href="assets/ai_hammer_flow.png">Evaluation design →</a></div>
 </div></section>
 
 <section id="work"><div class="wrap">
  <div class="eyebrow">More work</div><h2>Projects</h2>
  <div class="grid">
+  <article class="card">
+   <a href="assets/ecom_checkout.jpg"><img src="assets/ecom_checkout.jpg" alt="Shopendo storefront checkout"></a>
+   <div class="in">
+    <span class="tag">Built at AURAX · full-stack + recommender</span>
+    <h3>Shopendo: Full-Stack E-commerce with AI Recommendations</h3>
+    <p class="value">Shoppers see similar products from their first visit, and the business team runs catalogue, prices, promotions and stock without a developer.</p>
+    <p>A MERN storefront with image-based recommendations, Stripe checkout and a self-service back-office with a revenue dashboard.</p>
+    <div class="stats"><div class="stat"><b>50k+</b>product images searchable by look</div><div class="stat"><b>Day one</b>recommendations with no purchase history</div></div>
+    <div class="chips"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">MongoDB</span><span class="chip">Flask</span><span class="chip">Stripe</span></div>
+   </div>
+  </article>
   <article class="card">
    <a href="assets/av_demo_poster.jpg"><img src="assets/av_demo_poster.jpg" alt="Autonomous-vehicle perception demo"></a>
    <div class="in">
@@ -227,27 +240,16 @@ footer{padding:40px 0 56px;border-top:1px solid var(--line);font-size:14px;color
     <div class="links2"><a href="https://github.com/iyed122/automated-twitter-content">Code →</a></div>
    </div>
   </article>
-  <article class="card">
-   <a href="assets/ecom_checkout.jpg"><img src="assets/ecom_checkout.jpg" alt="Shopendo storefront checkout"></a>
-   <div class="in">
-    <span class="tag">Built at AURAX · full-stack + recommender</span>
-    <h3>Shopendo: AI E-commerce</h3>
-    <p class="value">Shoppers see similar products from their first visit, and the business team runs catalogue, prices, promotions and stock without a developer.</p>
-    <p>A MERN storefront with image-based recommendations, Stripe checkout and a self-service back-office with a revenue dashboard.</p>
-    <div class="stats"><div class="stat"><b>50k+</b>product images searchable by look</div><div class="stat"><b>Day one</b>recommendations with no purchase history</div></div>
-    <div class="chips"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">MongoDB</span><span class="chip">Flask</span><span class="chip">Stripe</span></div>
-   </div>
-  </article>
  </div>
 </div></section>
 
 <section id="skills"><div class="wrap">
  <div class="eyebrow">Toolbox</div><h2>Skills</h2>
  <div class="skills">
+  <div><h4>Software &amp; web</h4><div class="chips"><span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">React · Vite</span><span class="chip">Node.js · Express</span><span class="chip">FastAPI</span><span class="chip">Flask</span><span class="chip">REST APIs</span><span class="chip">Stripe</span><span class="chip">Docker</span><span class="chip">Git · GitLab</span><span class="chip">Jira · Confluence</span></div></div>
   <div><h4>AI assistants &amp; agents</h4><div class="chips"><span class="chip">RAG (vector + graph)</span><span class="chip">LangGraph</span><span class="chip">LangChain</span><span class="chip">CrewAI</span><span class="chip">Hugging Face</span><span class="chip">Ollama</span><span class="chip">Tool / API calling</span></div></div>
-  <div><h4>MLOps &amp; evaluation</h4><div class="chips"><span class="chip">RAGAS</span><span class="chip">LLM-as-judge</span><span class="chip">Release gates</span><span class="chip">QLoRA · RAFT</span><span class="chip">MLflow</span><span class="chip">Docker</span><span class="chip">AWS SageMaker</span></div></div>
-  <div><h4>ML &amp; computer vision</h4><div class="chips"><span class="chip">PyTorch</span><span class="chip">TensorFlow / Keras</span><span class="chip">scikit-learn</span><span class="chip">OpenCV</span><span class="chip">YOLOv8</span><span class="chip">Pandas · NumPy</span></div></div>
-  <div><h4>Backend, data &amp; integrations</h4><div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Flask</span><span class="chip">Node.js</span><span class="chip">React</span><span class="chip">SQL · Cypher</span><span class="chip">Neo4j</span><span class="chip">MongoDB</span><span class="chip">PostgreSQL</span><span class="chip">Power BI</span><span class="chip">Jira · Confluence · GitLab APIs</span></div></div>
+  <div><h4>MLOps &amp; evaluation</h4><div class="chips"><span class="chip">RAGAS</span><span class="chip">LLM-as-judge</span><span class="chip">Release gates</span><span class="chip">QLoRA · RAFT</span><span class="chip">MLflow</span><span class="chip">AWS SageMaker</span></div></div>
+  <div><h4>ML, data &amp; cloud</h4><div class="chips"><span class="chip">PyTorch</span><span class="chip">TensorFlow / Keras</span><span class="chip">scikit-learn</span><span class="chip">OpenCV</span><span class="chip">YOLOv8</span><span class="chip">Pandas · NumPy</span><span class="chip">SQL · Cypher</span><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">Neo4j</span><span class="chip">Power BI</span><span class="chip">AWS (EC2, S3, Lambda)</span></div></div>
  </div>
 </div></section>
 
@@ -255,7 +257,7 @@ footer{padding:40px 0 56px;border-top:1px solid var(--line);font-size:14px;color
  <div class="facts">
   <div><h4>Education</h4>Engineering degree, Data Science &amp; AI, TEK-UP, 2026<br>BSc Computer Science, ISAMM, 2023</div>
   <div><h4>Languages</h4>Arabic (native) · French (professional) · English (professional working proficiency, IELTS Academic)</div>
-  <div><h4>Contact</h4><a href="mailto:iyedmediouni122@gmail.com">iyedmediouni122@gmail.com</a><br>+216 29 514 155<br><a href="https://www.linkedin.com/in/iyed-mediouni-673955219/">LinkedIn</a> · <a href="https://github.com/iyed122">GitHub</a></div>
+  <div><h4>Contact</h4><a href="mailto:iyedmediouni122@gmail.com">iyedmediouni122@gmail.com</a><br>+216 29 514 155<br>CV: <a href="Iyed_Mediouni_CV_Software_EN.pdf">Software</a> · <a href="Iyed_Mediouni_CV.pdf">AI</a> · <a href="Iyed_Mediouni_CV_Software_FR.pdf">Logiciel (FR)</a> · <a href="Iyed_Mediouni_CV_FR.pdf">IA (FR)</a><br><a href="https://www.linkedin.com/in/iyed-mediouni-673955219/">LinkedIn</a> · <a href="https://github.com/iyed122">GitHub</a></div>
  </div>
 </div></section>
 
