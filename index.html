@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Iyed Mediouni · Applied AI &amp; LLMOps Engineer</title>
-<meta name="description" content="Applied AI and LLMOps engineer. Built an enterprise AI assistant over Jira, Confluence and GitLab that ATEME bought for about €100k.">
+<title>Iyed Mediouni · AI Engineer, Assistants, Agents &amp; MLOps</title>
+<meta name="description" content="AI engineer building AI assistants, agents and the MLOps behind them. Latest: an enterprise assistant over Jira, Confluence and GitLab, built at TELNET Holding for ATEME.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -77,10 +77,11 @@ h4{color:var(--ink);font-size:15px;margin-bottom:8px}
 details{font-size:14.5px;border-top:1px solid var(--line);padding-top:12px;margin-top:24px}
 summary{cursor:pointer;font-weight:600;color:var(--ink)}
 details ul{margin:10px 0 0 18px;display:grid;gap:6px}
-.thumbs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:24px;align-items:start}
-.thumbs a{display:block}
-.thumbs img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line);background:#fff;padding:8px}
-.thumbs span{display:block;font-size:13px;color:var(--muted);margin-top:6px}
+.gallery{display:grid;grid-template-columns:1fr 1.15fr;gap:16px;margin-top:28px;align-items:start}
+.gallery .side{display:grid;gap:16px}
+.gallery a{display:block}
+.gallery img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line);background:var(--canvas)}
+.gallery span{display:block;font-size:13px;color:var(--muted);margin-top:6px}
 .links2{display:flex;flex-wrap:wrap;gap:16px;font-weight:600;font-size:14px;color:var(--accent);margin-top:auto;padding-top:4px}
 .links2 a:hover{text-decoration:underline}
 
@@ -95,7 +96,7 @@ details ul{margin:10px 0 0 18px;display:grid;gap:6px}
 .facts h4{margin-bottom:6px}
 footer{padding:40px 0 56px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
 @media (max-width:860px){.hero{grid-template-columns:1fr}.photo{width:120px;height:120px;order:-1}
- .impact{grid-template-columns:repeat(2,1fr)}.cols3,.grid,.skills,.facts,.thumbs{grid-template-columns:1fr}nav .links{gap:14px}}
+ .impact{grid-template-columns:repeat(2,1fr)}.cols3,.grid,.skills,.facts,.gallery{grid-template-columns:1fr}nav .links{gap:14px}}
 @media (max-width:520px){nav .links a.hide-s{display:none}}
 </style>
 </head>
@@ -106,10 +107,10 @@ footer{padding:40px 0 56px;border-top:1px solid var(--line);font-size:14px;color
 <header><div class="wrap">
  <div class="hero">
   <div>
-   <div class="eyebrow">Applied AI · LLMOps Engineer</div>
+   <div class="eyebrow">AI Engineer · Assistants, Agents &amp; MLOps</div>
    <h1>I build AI that <em>pays for itself.</em></h1>
-   <p class="lead">I build AI assistants and LLM pipelines for engineering teams. They find answers across Jira, Confluence and GitLab, cite their sources, and a new model only goes live once it is proven better than the last.</p>
-   <p class="proof">Latest: an assistant built at <b>TELNET Holding</b> for <b>ATEME</b>, the French video-delivery company, which bought it for about €100k and rolled it out department by department.</p>
+   <p class="lead">I build AI assistants and agents that work on a company's own knowledge, and the MLOps behind them: evaluation, fine-tuning, experiment tracking and release gates, so every new model is proven before it reaches users.</p>
+   <p class="proof">Latest: an AI assistant built at <b>TELNET Holding</b> for <b>ATEME</b>, the French video-delivery company. ATEME bought it and rolled it out department by department.</p>
    <div class="cta">
     <a class="btn primary" href="#case">Watch the 2-minute demo</a>
     <a class="btn" href="Iyed_Mediouni_CV.pdf">Download CV</a>
@@ -122,10 +123,10 @@ footer{padding:40px 0 56px;border-top:1px solid var(--line);font-size:14px;color
   <img class="photo" src="assets/iyed_suit.jpg" alt="Iyed Mediouni">
  </div>
  <div class="impact">
-  <div class="stat"><b>€100k</b>approximate price ATEME paid for it</div>
   <div class="stat"><b>20 min</b>saved per engineer, every working day</div>
-  <div class="stat"><b>All depts.</b>rolled out department by department</div>
+  <div class="stat"><b>All depts.</b>rolled out at ATEME, one department at a time</div>
   <div class="stat"><b>94.8%</b>of answers quote their source</div>
+  <div class="stat"><b>1.28 M</b>knowledge segments indexed from Jira and Confluence</div>
  </div>
 </div></header>
 
@@ -153,7 +154,7 @@ footer{padding:40px 0 56px;border-top:1px solid var(--line);font-size:14px;color
   <div class="box">
    <h4>What it changed</h4>
    <ul>
-    <li>ATEME bought it for about €100k, and TELNET paid me a share of the sale.</li>
+    <li>ATEME bought it, and TELNET paid me a share of the sale.</li>
     <li>About 20 minutes saved per engineer per day.</li>
     <li>It started with individual engineers, then spread department by department.</li>
     <li>Onboarding got easier in every department: a new engineer can ask the assistant before asking a colleague.</li>
@@ -170,17 +171,21 @@ footer{padding:40px 0 56px;border-top:1px solid var(--line);font-size:14px;color
  <div class="quality">
   <h4>Quality you can measure, before anything ships</h4>
   <div class="stats">
-   <div class="stat"><b>94.8%</b>answers backed by a quoted source, up from 0% before fine-tuning</div>
+   <div class="stat"><b>0% to 94.8%</b>answers backed by a quoted source, after fine-tuning</div>
    <div class="stat"><b>57% fewer</b>dead-end "I don't know" answers (19.0% to 8.1%)</div>
    <div class="stat"><b>2.4x faster</b>average answer time, 7.3 s to 3.0 s</div>
-   <div class="stat"><b>1.28 M</b>knowledge segments from 428,593 tickets and 47,851 pages</div>
+   <div class="stat"><b>6 failure types</b>tracked on every answer; the 3 critical ones keep it out of training data</div>
    <div class="stat"><b>Every release</b>tested against the live model on held-out questions, with the pass mark fixed before training</div>
   </div>
  </div>
 
- <div class="thumbs">
-  <a href="assets/ai_architecture.png"><img src="assets/ai_architecture.png" alt="System architecture" loading="lazy"><span>Architecture: live answers on top, the self-improving training loop below</span></a>
-  <a href="assets/ai_hammer_flow.png"><img src="assets/ai_hammer_flow.png" alt="Evaluation design: three independent scorers and one veto" loading="lazy"><span>Evaluation: three independent scorers, and one veto that keeps bad answers out of training</span></a>
+ <div class="gallery">
+  <a class="main" href="assets/ai_ui_chat.png"><img src="assets/ai_ui_chat.png" alt="The assistant answering with links to the tickets behind each claim" loading="lazy"><span>Every answer links to the ticket or page behind each claim</span></a>
+  <div class="side">
+   <a href="assets/ai_ui_data.png"><img src="assets/ai_ui_data.png" alt="Training data screen with graded candidate answers" loading="lazy"><span>Training data: only answers that pass evaluation become training examples</span></a>
+   <a href="assets/ai_ui_runs.png"><img src="assets/ai_ui_runs.png" alt="Tracked training runs" loading="lazy"><span>Every training run tracked, ready to promote</span></a>
+   <a href="assets/ai_ui_serving.png"><img src="assets/ai_ui_serving.png" alt="Model serving screen" loading="lazy"><span>Serving: switch the live model in one click</span></a>
+  </div>
  </div>
 
  <details><summary>How it works, for engineers</summary><ul>
@@ -192,7 +197,7 @@ footer{padding:40px 0 56px;border-top:1px solid var(--line);font-size:14px;color
   <li><b>Release gate:</b> thresholds fixed before training; base model and adapter answer the same held-out questions and a deterministic scorer, not an LLM, decides.</li>
  </ul></details>
  <div class="chips" style="margin-top:18px"><span class="chip">LangGraph</span><span class="chip">Neo4j</span><span class="chip">Ollama · Qwen3</span><span class="chip">RAGAS</span><span class="chip">QLoRA / RAFT</span><span class="chip">MLflow</span><span class="chip">Jira · Confluence · GitLab APIs</span><span class="chip">React</span><span class="chip">Docker</span></div>
- <div class="links2" style="margin-top:16px"><a href="https://github.com/iyed122/ai-assistant">Code →</a><a href="assets/ai_demo.mp4">Demo video →</a><a href="assets/ai_architecture.png">Architecture →</a></div>
+ <div class="links2" style="margin-top:16px"><a href="https://github.com/iyed122/ai-assistant">Code →</a><a href="assets/ai_demo.mp4">Demo video →</a><a href="assets/ai_architecture.png">Architecture →</a><a href="assets/ai_hammer_flow.png">Evaluation design →</a></div>
 </div></section>
 
 <section id="work"><div class="wrap">
@@ -201,24 +206,24 @@ footer{padding:40px 0 56px;border-top:1px solid var(--line);font-size:14px;color
   <article class="card">
    <a href="assets/av_demo_poster.jpg"><img src="assets/av_demo_poster.jpg" alt="Autonomous-vehicle perception demo"></a>
    <div class="in">
-    <span class="tag">Computer vision · driver safety</span>
+    <span class="tag">Computer vision · LiDAR · driver safety</span>
     <h3>Autonomous-Vehicle Perception &amp; Planning</h3>
     <p class="value">A driver gets a spoken warning before a collision, without having to watch a screen.</p>
-    <p>Six cameras feed object detection, distance and time-to-collision, and trajectory forecasting; a vision-language model reads the scene and speaks the verdict.</p>
-    <div class="stats"><div class="stat"><b>360°</b>six-camera view</div><div class="stat"><b>Real-time</b>time-to-collision</div><div class="stat"><b>Spoken</b>alerts, no screen needed</div></div>
-    <div class="chips"><span class="chip">PyTorch</span><span class="chip">YOLOv8</span><span class="chip">VLM</span><span class="chip">AWS SageMaker</span></div>
+    <p>Six cameras and a LiDAR feed two models: a fine-tuned YOLOv8 detector finds vehicles, pedestrians and cyclists, and a custom bird's-eye-view (BEV) network predicts the car's path from the LiDAR. A fusion layer turns both into CLEAR, CAUTION or BRAKE with time-to-collision, and a local vision-language model explains the call out loud.</p>
+    <div class="stats"><div class="stat"><b>360°</b>six cameras plus LiDAR</div><div class="stat"><b>Real-time</b>time-to-collision</div><div class="stat"><b>Spoken</b>alerts, no screen needed</div></div>
+    <div class="chips"><span class="chip">PyTorch</span><span class="chip">YOLOv8</span><span class="chip">BEV network</span><span class="chip">LiDAR</span><span class="chip">Qwen2.5-VL</span><span class="chip">nuScenes</span><span class="chip">AWS SageMaker</span></div>
     <div class="links2"><a href="https://github.com/iyed122/autonomous-vehicule-VLM">Code →</a><a href="assets/av_demo.mp4">Demo →</a></div>
    </div>
   </article>
   <article class="card">
-   <a href="assets/crew_run.png"><img src="assets/crew_run.png" alt="AI content crew run"></a>
+   <a href="assets/crew_run_clean.png"><img src="assets/crew_run_clean.png" alt="AI content crew run"></a>
    <div class="in">
-    <span class="tag">Multi-agent · content automation</span>
-    <h3>AI Content Crew</h3>
-    <p class="value">One run takes a topic from research to ready-to-post drafts: the work of a researcher, a writer and an editor.</p>
-    <p>Three agents in sequence research live trends, draft and polish posts, with a fast mode and a researched mode.</p>
-    <div class="stats"><div class="stat"><b>One run</b>from topic to ready-to-post drafts</div><div class="stat"><b>70B</b>LLaMA-3.3 on Groq's fast inference</div></div>
-    <div class="chips"><span class="chip">CrewAI</span><span class="chip">Groq</span><span class="chip">Python</span></div>
+    <span class="tag">AI agents · content automation</span>
+    <h3>Multi-Agent Content Automation</h3>
+    <p class="value">One run takes a niche from trend research to published posts: the work of a trend scout, a researcher and a writer.</p>
+    <p>Three AI agents work in sequence: a Trending Topic Researcher pulls live Google Trends, a Content Researcher reads the web through search and browsing tools, and a Content Creator writes the posts and publishes them to X through its API. Every post is tied back to the sources it came from.</p>
+    <div class="stats"><div class="stat"><b>One run</b>from trend to published post</div><div class="stat"><b>70B</b>LLaMA-3 on Groq's fast inference</div></div>
+    <div class="chips"><span class="chip">CrewAI</span><span class="chip">AI agents</span><span class="chip">LLaMA-3 70B</span><span class="chip">Groq</span><span class="chip">Serper search</span><span class="chip">Google Trends</span><span class="chip">X API</span></div>
     <div class="links2"><a href="https://github.com/iyed122/automated-twitter-content">Code →</a></div>
    </div>
   </article>
@@ -239,8 +244,8 @@ footer{padding:40px 0 56px;border-top:1px solid var(--line);font-size:14px;color
 <section id="skills"><div class="wrap">
  <div class="eyebrow">Toolbox</div><h2>Skills</h2>
  <div class="skills">
-  <div><h4>LLM apps &amp; agents</h4><div class="chips"><span class="chip">RAG (vector + graph)</span><span class="chip">LangGraph</span><span class="chip">LangChain</span><span class="chip">CrewAI</span><span class="chip">Hugging Face</span><span class="chip">Ollama</span><span class="chip">Tool / API calling</span></div></div>
-  <div><h4>LLMOps &amp; evaluation</h4><div class="chips"><span class="chip">RAGAS</span><span class="chip">LLM-as-judge</span><span class="chip">Release gates</span><span class="chip">QLoRA · RAFT</span><span class="chip">MLflow</span><span class="chip">Docker</span><span class="chip">AWS SageMaker</span></div></div>
+  <div><h4>AI assistants &amp; agents</h4><div class="chips"><span class="chip">RAG (vector + graph)</span><span class="chip">LangGraph</span><span class="chip">LangChain</span><span class="chip">CrewAI</span><span class="chip">Hugging Face</span><span class="chip">Ollama</span><span class="chip">Tool / API calling</span></div></div>
+  <div><h4>MLOps &amp; evaluation</h4><div class="chips"><span class="chip">RAGAS</span><span class="chip">LLM-as-judge</span><span class="chip">Release gates</span><span class="chip">QLoRA · RAFT</span><span class="chip">MLflow</span><span class="chip">Docker</span><span class="chip">AWS SageMaker</span></div></div>
   <div><h4>ML &amp; computer vision</h4><div class="chips"><span class="chip">PyTorch</span><span class="chip">TensorFlow / Keras</span><span class="chip">scikit-learn</span><span class="chip">OpenCV</span><span class="chip">YOLOv8</span><span class="chip">Pandas · NumPy</span></div></div>
   <div><h4>Backend, data &amp; integrations</h4><div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Flask</span><span class="chip">Node.js</span><span class="chip">React</span><span class="chip">SQL · Cypher</span><span class="chip">Neo4j</span><span class="chip">MongoDB</span><span class="chip">PostgreSQL</span><span class="chip">Power BI</span><span class="chip">Jira · Confluence · GitLab APIs</span></div></div>
  </div>
