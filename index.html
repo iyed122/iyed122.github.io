@@ -216,16 +216,16 @@ footer{padding:40px 0 56px;border-top:1px solid var(--line);font-size:14px;color
     <div class="chips"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">MongoDB</span><span class="chip">Flask</span><span class="chip">Stripe</span></div>
    </div>
   </article>
-  <article class="card">
-   <a href="assets/av_demo_poster.jpg"><img src="assets/av_demo_poster.jpg" alt="Autonomous-vehicle perception demo"></a>
+  <article class="card" id="av">
+   <a href="assets/av_demo.mp4"><img src="assets/av_demo_poster.jpg" alt="Driving-risk review demo: business question, replay of a real drive, safety report"></a>
    <div class="in">
-    <span class="tag">Computer vision · LiDAR · driver safety</span>
-    <h3>Autonomous-Vehicle Perception &amp; Planning</h3>
-    <p class="value">A driver gets a spoken warning before a collision, without having to watch a screen.</p>
-    <p>Six cameras and a LiDAR feed two models: a fine-tuned YOLOv8 detector finds vehicles, pedestrians and cyclists, and a custom bird's-eye-view (BEV) network predicts the car's path from the LiDAR. A fusion layer turns both into CLEAR, CAUTION or BRAKE with time-to-collision, and a local vision-language model explains the call out loud.</p>
-    <div class="stats"><div class="stat"><b>360°</b>six cameras plus LiDAR</div><div class="stat"><b>Real-time</b>time-to-collision</div><div class="stat"><b>Spoken</b>alerts, no screen needed</div></div>
-    <div class="chips"><span class="chip">PyTorch</span><span class="chip">YOLOv8</span><span class="chip">BEV network</span><span class="chip">LiDAR</span><span class="chip">Qwen2.5-VL</span><span class="chip">nuScenes</span><span class="chip">AWS SageMaker</span></div>
-    <div class="links2"><a href="https://github.com/iyed122/autonomous-vehicule-VLM">Code →</a><a href="assets/av_demo.mp4">Demo →</a></div>
+    <span class="tag">Computer vision · LiDAR · fleet safety</span>
+    <h3>Driving-Risk Review: Autonomous-Vehicle Perception &amp; Trajectory Prediction</h3>
+    <p class="value">Fleets record more driving than anyone can watch. This scores every drive and keeps only the close calls worth a look: 2% of the footage, ranked worst first.</p>
+    <p>Each LiDAR scan becomes a top-down map; the car's speed is measured by aligning consecutive scans, and the lane it will cover in the next 5.5 seconds is checked for obstacles: CLEAR, CAUTION or BRAKE, with the gap and time to collision. Close calls while moving go into a review queue with a plain-language note from a local language model. Models trained on 200 GB of nuScenes on AWS SageMaker: a bird's-eye-view trajectory planner, evaluated against the car's real motion, and a YOLOv8 detector.</p>
+    <div class="stats"><div class="stat"><b>28 min</b>of real Boston and Singapore driving scored</div><div class="stat"><b>9 moments</b>queued for review</div><div class="stat"><b>0.6 min</b>left to watch</div></div>
+    <div class="chips"><span class="chip">PyTorch</span><span class="chip">LiDAR · BEV network</span><span class="chip">YOLOv8</span><span class="chip">nuScenes</span><span class="chip">AWS SageMaker</span><span class="chip">NumPy</span><span class="chip">Ollama</span></div>
+    <div class="links2"><a href="https://github.com/iyed122/autonomous-vehicule-VLM">Code →</a><a href="assets/av_demo.mp4">1-minute demo →</a></div>
    </div>
   </article>
   <article class="card">
