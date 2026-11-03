@@ -217,15 +217,15 @@ footer{padding:40px 0 56px;border-top:1px solid var(--line);font-size:14px;color
    </div>
   </article>
   <article class="card" id="av">
-   <a href="assets/av_demo.mp4"><img src="assets/av_demo_poster.jpg" alt="Driving-risk review demo: business question, replay of a real drive, safety report"></a>
+   <a href="assets/av_demo.mp4"><img src="assets/av_demo_poster.jpg" alt="Driving-risk review demo: business question, replay of a real drive, model results"></a>
    <div class="in">
-    <span class="tag">Computer vision · LiDAR · fleet safety</span>
+    <span class="tag">Computer vision · LiDAR · trajectory prediction · fleet safety</span>
     <h3>Driving-Risk Review: Autonomous-Vehicle Perception &amp; Trajectory Prediction</h3>
-    <p class="value">Fleets record more driving than anyone can watch. This scores every drive and keeps only the close calls worth a look: 2% of the footage, ranked worst first.</p>
-    <p>Each LiDAR scan becomes a top-down map; the car's speed is measured by aligning consecutive scans, and the lane it will cover in the next 5.5 seconds is checked for obstacles: CLEAR, CAUTION or BRAKE, with the gap and time to collision. Close calls while moving go into a review queue with a plain-language note from a local language model. Models trained on 200 GB of nuScenes on AWS SageMaker: a bird's-eye-view trajectory planner, evaluated against the car's real motion, and a YOLOv8 detector.</p>
-    <div class="stats"><div class="stat"><b>28 min</b>of real Boston and Singapore driving scored</div><div class="stat"><b>9 moments</b>queued for review</div><div class="stat"><b>0.6 min</b>left to watch</div></div>
-    <div class="chips"><span class="chip">PyTorch</span><span class="chip">LiDAR · BEV network</span><span class="chip">YOLOv8</span><span class="chip">nuScenes</span><span class="chip">AWS SageMaker</span><span class="chip">NumPy</span><span class="chip">Ollama</span></div>
-    <div class="links2"><a href="https://github.com/iyed122/autonomous-vehicule-VLM">Code →</a><a href="assets/av_demo.mp4">1-minute demo →</a></div>
+    <p class="value">Fleets record more driving than anyone can watch. This scores every drive and keeps only the close calls worth a look: 3% of the footage, ranked worst first.</p>
+    <p>A bird's-eye-view network trained on 200 GB of nuScenes driving data on AWS SageMaker reads each LiDAR scan and, with the car's motion measured from consecutive scans, predicts three candidate paths for the next 5.5 seconds. Tested on drives it never saw, it beats every physics baseline. A risk layer checks the predicted path for obstacles and calls CLEAR, CAUTION or BRAKE with the gap and time to collision; close calls go into a review queue with a plain-language note from a local language model.</p>
+    <div class="stats"><div class="stat"><b>200 GB</b>of driving data, trained on AWS SageMaker</div><div class="stat"><b>&minus;26%</b>error vs physics baselines, best of 3 predicted paths</div><div class="stat"><b>10 of 28 min</b>flagged: 0.8 min left to watch</div></div>
+    <div class="chips"><span class="chip">PyTorch</span><span class="chip">LiDAR · BEV network</span><span class="chip">AWS SageMaker</span><span class="chip">nuScenes</span><span class="chip">YOLOv8</span><span class="chip">NumPy</span><span class="chip">Ollama</span></div>
+    <div class="links2"><a href="https://github.com/iyed122/autonomous-vehicule-VLM">Code →</a><a href="assets/av_demo.mp4">50-second demo →</a></div>
    </div>
   </article>
   <article class="card">
